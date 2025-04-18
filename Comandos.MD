@@ -1,7 +1,6 @@
 # 🛠️ Manual Avanzado CLI - Issabel PBX / Asterisk (Navaja Suiza de Comandos)
 **Autor:** Jesús Flores – Soporte TI  
 **Versión:** 2025.04  
-**Formato:** Markdown (.md)  
 **Propósito:** Guía profesional de referencia para administración, monitoreo y solución de problemas en entornos Asterisk e Issabel desde CLI.
 
 ---
