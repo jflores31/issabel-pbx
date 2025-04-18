@@ -7,20 +7,20 @@
 
 ## 📑 ÍNDICE
 
-1. [Navegación y ayuda CLI](#1-)
-2. [Extensiones PJSIP y SIP](#2-)
-3. [Troncales SIP/IAX/DAHDI](#3-)
-4. [Canales y llamadas](#4-)
-5. [Recargas, módulos y reinicios](#5-)
-6. [Colas y agentes](#6-)
-7. [Conferencias](#7-)
-8. [Audio, RTP y Codecs](#8-)
-9. [ASTDB (Base de datos interna)](#9-)
-10. [Seguridad, AMI y logs](#10-)
-11. [Extras y herramientas](#11-)
-12. [Cambio de contraseñas](#12-)
-13. [Script de diagnóstico rápido](#13-)
-14. [Pruebas de llamadas desde CLI](#14-)
+1. [🧭 Navegación y ayuda CLI](#1-🧭-navegación-y-ayuda-cli)  
+2. [📞 Extensiones PJSIP y SIP](#2-📞-extensiones-pjsip-y-sip)  
+3. [📡 Troncales SIP/IAX/DAHDI](#3-📡-troncales-sipiaxdahdi)  
+4. [📊 Canales y llamadas](#4-📊-canales-y-llamadas)  
+5. [🔁 Recargas, módulos y reinicios](#5-🔁-recargas-módulos-y-reinicios)  
+6. [📥 Colas y agentes](#6-📥-colas-y-agentes)  
+7. [🎙️ Conferencias](#7-🎙️-conferencias)  
+8. [🔊 Audio, RTP y Codecs](#8-🔊-audio-rtp-y-codecs)  
+9. [🧠 ASTDB (Base de datos interna)](#9-🧠-astdb-base-de-datos-interna)  
+10. [🔐 Seguridad, AMI y logs](#10-🔐-seguridad-ami-y-logs)  
+11. [🛠️ Extras y herramientas](#11-🛠️-extras-y-herramientas)  
+12. [🔑 Cambio de contraseñas](#12-🔑-cambio-de-contraseñas)  
+13. [🧩 Script de diagnóstico rápido](#13-🧩-script-de-diagnóstico-rápido)  
+14. [☎️ Pruebas de llamadas desde CLI](#14-☎️-pruebas-de-llamadas-desde-cli)
 
 ---
 
