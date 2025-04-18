@@ -25,7 +25,7 @@
 
 ---
 
-## 1. 🧭 Navegación y ayuda CLI
+# 1. 🧭 Navegación y ayuda CLI
 
 ```bash
 help                              # Muestra todos los comandos disponibles
@@ -39,7 +39,7 @@ core show version                 # Muestra versión actual de Asterisk
 
 ---
 
-## 2. 📞 Extensiones PJSIP y SIP
+# 2. 📞 Extensiones PJSIP y SIP
 
 ```bash
 🔹 PJSIP
