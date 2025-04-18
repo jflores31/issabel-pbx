@@ -37,10 +37,12 @@ core show sysinfo                 # Información del sistema
 core show uptime                  # Tiempo de actividad del servicio Asterisk
 core show version                 # Muestra versión actual de Asterisk
 
+---
+
 ## 2. 📞 Extensiones PJSIP y SIP
 
-🔹 PJSIP
 ```bash
+🔹 PJSIP
 pjsip show endpoints              # Lista todas las extensiones PJSIP
 pjsip show contacts               # Muestra IP, puerto y estado de registro de extensiones
 pjsip show endpoint 1001          # Información detallada de la extensión 1001
