@@ -7,20 +7,20 @@
 
 ## 📑 ÍNDICE
 
-1. Navegación y ayuda  
-2. Extensiones PJSIP y SIP  
-3. Troncales SIP/IAX/DAHDI  
-4. Canales y llamadas  
-5. Recargas, módulos y reinicios  
-6. Colas y agentes  
-7. Conferencias  
-8. Audio, RTP y Codecs  
-9. ASTDB (Base de datos interna)  
-10. Seguridad, AMI y logs  
-11. Extras y herramientas  
-12. Cambio de contraseñas  
-13. Script de diagnóstico rápido  
-14. Pruebas de llamadas desde CLI
+1. [Navegación y ayuda CLI](#1-)
+2. [Extensiones PJSIP y SIP](#2-)
+3. [Troncales SIP/IAX/DAHDI](#3-)
+4. [Canales y llamadas](#4-)
+5. [Recargas, módulos y reinicios](#5-)
+6. [Colas y agentes](#6-)
+7. [Conferencias](#7-)
+8. [Audio, RTP y Codecs](#8-)
+9. [ASTDB (Base de datos interna)](#9-)
+10. [Seguridad, AMI y logs](#10-)
+11. [Extras y herramientas](#11-)
+12. [Cambio de contraseñas](#12-)
+13. [Script de diagnóstico rápido](#13-)
+14. [Pruebas de llamadas desde CLI](#14-)
 
 ---
 
