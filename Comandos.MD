@@ -7,8 +7,6 @@
 
 ## 📑 ÍNDICE
 
-- [🛠️ Manual Avanzado CLI - Issabel PBX / Asterisk (Navaja Suiza de Comandos)](#️-manual-avanzado-cli---issabel-pbx--asterisk-navaja-suiza-de-comandos)
-  - [📑 ÍNDICE](#-índice)
 - [1. 🧭 Navegación y ayuda CLI](#1--navegación-y-ayuda-cli)
 - [2. 📞 Extensiones PJSIP y SIP](#2--extensiones-pjsip-y-sip)
     - [🔹 PJSIP](#-pjsip)
