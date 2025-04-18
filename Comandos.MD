@@ -36,7 +36,10 @@ cli reload permissions            # Recarga configuración de permisos
 core show sysinfo                 # Información del sistema
 core show uptime                  # Tiempo de actividad del servicio Asterisk
 core show version                 # Muestra versión actual de Asterisk
-2. 📞 Extensiones PJSIP y SIP
+
+---
+
+## 2. 📞 Extensiones PJSIP y SIP
 🔹 PJSIP
 bash
 Copiar
