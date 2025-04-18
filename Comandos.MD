@@ -2,149 +2,185 @@
 **Autor:** Jesús Flores – Soporte TI  
 **Versión:** 2025.04  
 **Formato:** Markdown (.md)  
-**Propósito:** Herramienta de referencia completa para administrar, monitorear, auditar y resolver incidencias técnicas en sistemas Issabel PBX / Asterisk CLI.
+**Propósito:** Guía profesional de referencia para administración, monitoreo y solución de problemas en entornos Asterisk e Issabel desde CLI.
 
 ---
 
 ## 📑 ÍNDICE
 
-1. [🧭 Navegación y ayuda](#1)
-2. [📞 Extensiones PJSIP y SIP](#2)
-3. [📡 Troncales SIP/IAX/DAHDI](#3)
-4. [📊 Canales y llamadas](#4)
-5. [🔁 Recargas, módulos y reinicios](#5)
-6. [📥 Colas y agentes](#6)
-7. [🎙️ Conferencias](#7)
-8. [🔊 Audio, RTP, Codecs](#8)
-9. [🧠 ASTDB (Base de datos interna)](#9)
-10. [🔐 Seguridad, AMI y logs](#10)
-11. [🛠️ Extras y otros servicios](#11)
-12. [🧩 Script de diagnóstico](#12)
+1. Navegación y ayuda  
+2. Extensiones PJSIP y SIP  
+3. Troncales SIP/IAX/DAHDI  
+4. Canales y llamadas  
+5. Recargas, módulos y reinicios  
+6. Colas y agentes  
+7. Conferencias  
+8. Audio, RTP y Codecs  
+9. ASTDB (Base de datos interna)  
+10. Seguridad, AMI y logs  
+11. Extras y herramientas  
+12. Cambio de contraseñas  
+13. Script de diagnóstico rápido  
+14. Pruebas de llamadas desde CLI
 
 ---
 
 ## 1. 🧭 Navegación y ayuda CLI
 
 ```bash
-help                              # Muestra todos los comandos
-!                                 # Ejecutar comando del sistema
-cli show aliases                  # Ver alias definidos
-cli show permissions              # Ver permisos de usuario CLI
-cli reload permissions            # Recargar permisos
-core show sysinfo                 # Ver detalles del sistema
-core show uptime                  # Tiempo activo
-core show version                 # Versión de Asterisk
+help                              # Muestra todos los comandos disponibles
+!                                 # Ejecuta comandos del sistema desde Asterisk CLI
+cli show aliases                  # Muestra alias definidos en CLI
+cli show permissions              # Muestra permisos de usuario actual
+cli reload permissions            # Recarga configuración de permisos
+core show sysinfo                 # Información del sistema
+core show uptime                  # Tiempo de actividad del servicio Asterisk
+core show version                 # Muestra versión actual de Asterisk
 2. 📞 Extensiones PJSIP y SIP
 🔹 PJSIP
 bash
 Copiar
 Editar
-pjsip show endpoints              # Lista todas las extensiones
-pjsip show contacts               # Ver contactos activos
-pjsip show endpoint 1001          # Ver detalles de la ext. 1001
-pjsip qualify 1001                # Hacer ping OPTIONS
-pjsip show aors                   # Ver AORs configurados
-pjsip show auths                  # Ver autenticaciones
-pjsip show transports             # Transportes disponibles
+pjsip show endpoints              # Lista todas las extensiones PJSIP
+pjsip show contacts               # Muestra IP, puerto y estado de registro de extensiones
+pjsip show endpoint 1001          # Información detallada de la extensión 1001
+pjsip qualify 1001                # Envia un ping SIP (OPTIONS) a la extensión
+pjsip show aors                   # Muestra Address of Record configurados
+pjsip show auths                  # Lista autenticaciones configuradas
+pjsip show transports             # Lista transportes SIP definidos (UDP, TCP, TLS)
 🔹 SIP clásico (chan_sip)
 bash
 Copiar
 Editar
-sip show peers                    # Lista extensiones SIP
-sip show peer 1001                # Detalles de ext. SIP
-sip show registry                 # Registros SIP salientes
-sip qualify peer 1001             # Ping a peer SIP
-sip reload                        # Recargar chan_sip
+sip show peers                    # Lista extensiones SIP configuradas
+sip show peer 1001                # Detalles de conexión y autenticación del peer
+sip show registry                 # Estado de registros SIP hacia ITSPs o PBX externas
+sip qualify peer 1001             # Envía ping SIP clásico a la extensión
+sip reload                        # Recarga configuración de chan_sip
 🔹 IAX2
 bash
 Copiar
 Editar
-iax2 show peers                   # Lista peers IAX2
-iax2 show registry                # Registro IAX2
-iax2 reload                       # Recarga IAX
-3. 📡 Troncales y registros externos
+iax2 show peers                   # Lista extensiones IAX2
+iax2 show registry                # Estado de registros IAX2
+iax2 reload                       # Recarga configuración de IAX2
+## 3. 📡 Troncales y registros externos
 bash
 Copiar
 Editar
-sip show registry                 # Estado de registros SIP
-iax2 show registry                # Estado de IAX
-dahdi show channels               # Canales DAHDI
-pri show spans                    # Interfaces PRI
-4. 📊 Canales y llamadas
+sip show registry                 # Registros SIP salientes
+iax2 show registry                # Registros IAX salientes
+dahdi show channels               # Canales físicos DAHDI
+pri show spans                    # Estado de interfaces PRI (E1/T1)
+## 4. 📊 Canales y llamadas
 bash
 Copiar
 Editar
-core show channels                # Canales activos
-core show channels concise        # Vista resumida
-core show calls                   # Llamadas en curso
-core show channel CHANNEL         # Detalles de un canal
-core show channelstats            # Estadísticas
-channel request hangup CHANNEL    # Finalizar canal
-5. 🔁 Recargas, módulos y reinicios
+core show channels                # Llamadas activas con detalles
+core show channels concise        # Llamadas activas en formato resumido
+core show calls                   # Número de llamadas y canales activos
+core show channel CHANNEL         # Información detallada de un canal específico
+core show channelstats            # Estadísticas detalladas por canal
+channel request hangup CHANNEL    # Finaliza una llamada específica
+## 5. 🔁 Recargas, módulos y reinicios
 bash
 Copiar
 Editar
-core reload                       # Recarga completa
-dialplan reload                   # Solo recarga plan de marcado
+core reload                       # Recarga completa de Asterisk sin reiniciar
+dialplan reload                   # Recarga solo el dialplan (plan de marcado)
 module show                       # Muestra módulos cargados
-module reload res_pjsip.so        # Recarga un módulo específico
-core restart now                  # Reinicio inmediato
-core stop gracefully              # Detener Asterisk de forma segura
+module reload res_pjsip.so        # Recarga solo el módulo PJSIP
+core restart now                  # Reinicio inmediato de Asterisk
+core stop gracefully              # Detiene Asterisk sin cortar llamadas activas
 6. 📥 Colas y agentes
 bash
 Copiar
 Editar
-queue show                        # Ver colas y miembros
-queue reload all                  # Recargar colas
-queue pause member PJSIP/1001     # Pausar agente
-agent show all                    # Ver agentes
-agent logoff                      # Cerrar sesión de agente
-7. 🎙️ Conferencias
+queue show                        # Estado de colas y agentes conectados
+queue reload all                  # Recarga configuración de colas
+queue pause member PJSIP/1001     # Pausa al agente 1001 para que no reciba llamadas
+agent show all                    # Lista de agentes del sistema
+agent logoff                      # Cierra sesión del agente actual
+## 7. 🎙️ Conferencias
 bash
 Copiar
 Editar
-confbridge list                   # Ver conferencias activas
-confbridge mute/unmute all        # Control de audio
-confbridge kick <ext>             # Expulsar participante
-meetme list                       # Ver conferencias MeetMe
-meetme kick <user>                # Expulsar usuario
-8. 🔊 Audio, RTP y codecs
+confbridge list                   # Muestra conferencias activas y participantes
+confbridge mute all               # Silencia a todos los participantes
+confbridge unmute all             # Reactiva el audio de todos los participantes
+confbridge kick <ext>             # Expulsa una extensión de la sala
+meetme list                       # Lista conferencias activas (modo legacy)
+meetme kick <user>                # Expulsa un usuario específico de MeetMe
+## 8. 🔊 Audio, RTP y Codecs
 bash
 Copiar
 Editar
-rtp set debug on                  # Activar debug RTP
-rtp set debug off                 # Desactivar debug RTP
-core show codecs audio            # Ver codecs de audio
-core show sounds                  # Archivos de sonido
-file convert foo.wav bar.gsm      # Convertir audio
-9. 🧠 ASTDB (Base de datos interna)
+rtp set debug on                  # Muestra tráfico RTP en consola (solo audio)
+rtp set debug off                 # Detiene visualización de RTP
+core show codecs audio            # Lista codecs de audio disponibles
+core show sounds                  # Lista sonidos instalados en el sistema
+file convert archivo.wav archivo.gsm  # Convierte archivos de audio
+## 9. 🧠 ASTDB (Base de datos interna)
 bash
 Copiar
 Editar
-database show                     # Mostrar base completa
-database put family key value     # Escribir
-database get family key           # Leer valor
-database del family key           # Eliminar valor
-10. 🔐 Seguridad, AMI y debugging
+database show                     # Lista completa de la base de datos
+database put family key value     # Guarda un valor en la base
+database get family key           # Consulta un valor
+database del family key           # Elimina un valor
+## 10. 🔐 Seguridad, AMI y logs
 bash
 Copiar
 Editar
-manager show users                # Ver usuarios AMI
-manager show connected            # Usuarios conectados al AMI
-pjsip show unidentified_requests  # SIP desconocidos (posible intento ataque)
-logger show channels              # Ver canales de log
-core set verbose 4                # Nivel de salida de consola
-11. 🛠️ Extras y herramientas
+manager show users                # Lista usuarios AMI definidos
+manager show connected            # Conexiones AMI activas
+pjsip show unidentified_requests  # Solicitudes SIP no identificadas (alertas posibles ataques)
+logger show channels              # Muestra canales de log habilitados
+core set verbose 4                # Nivel de detalle en consola (de 0 a 10)
+## 11. 🛠️ Extras y herramientas
 bash
 Copiar
 Editar
 fax show sessions                 # Sesiones de fax activas
-fax show stats                    # Estadísticas de fax
-http show status                  # Estado de servidor web interno
-xmldoc dump                       # Volcar documentación XML
-dnsmgr status                     # Ver estado DNS
-say load new                      # Establecer modo de locución
-12. 🧩 Script de diagnóstico rápido (diagnostico.sh)
+fax show stats                    # Estadísticas generales de fax
+http show status                  # Estado del servidor web embebido de Asterisk
+xmldoc dump                       # Exporta documentación XML
+dnsmgr status                     # Estado del gestor DNS de Asterisk
+say load new                      # Activa el motor de locución nuevo
+## 12. 🔑 Cambio de contraseñas
+🔹 PJSIP – extensión
+ini
+Copiar
+Editar
+[pjsip-ext]
+type=auth
+auth_type=userpass
+password=NuevaContraseñaFuerte
+🔹 SIP clásico – extensión
+ini
+Copiar
+Editar
+[1001]
+secret=NuevaContraseñaSegura
+🔹 AMI (manager.conf)
+ini
+Copiar
+Editar
+[admin]
+secret=ClaveAMI
+read=all
+write=all
+bash
+Copiar
+Editar
+asterisk -rx "module reload manager"
+🔹 Usuario del sistema
+bash
+Copiar
+Editar
+passwd root
+passwd nombre_usuario
+## 13. 🧩 Script de diagnóstico rápido
 bash
 Copiar
 Editar
@@ -153,7 +189,42 @@ echo "Canales activos:"
 asterisk -rx "core show channels"
 echo "Contactos registrados:"
 asterisk -rx "pjsip show contacts"
-echo "Colas:"
+echo "Colas activas:"
 asterisk -rx "queue show"
-echo "Sistema:"
+echo "Estado del sistema:"
 asterisk -rx "core show sysinfo"
+14. ☎️ Pruebas de llamadas desde CLI
+bash
+Copiar
+Editar
+channel originate PJSIP/1001 extension@from-internal
+Simula una llamada desde Asterisk a la extensión 1001.
+---
+bash
+Copiar
+Editar
+channel originate SIP/1001 extension@from-internal
+Lo mismo, usando chan_sip.
+---
+bash
+Copiar
+Editar
+channel originate Local/1002@from-internal extension@from-internal
+Llama desde una extensión virtual al contexto interno.
+---
+bash
+Copiar
+Editar
+channel originate PJSIP/troncal/999999999 extension@from-internal
+Llamada saliente usando una troncal (cambiar troncal y número).
+---
+bash
+Copiar
+Editar
+core show channels
+Verifica si la llamada de prueba está activa.
+---
+bash
+Copiar
+Editar
+channel request hangup CHANNEL-ID
